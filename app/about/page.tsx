@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import type { Metadata } from 'next'
+import ImageCarousel from '@/components/ImageCarousel'
+import BooksGrid from '@/components/Book3D'
 
 export const metadata: Metadata = {
   title: 'About - Charlie Donnelly',
@@ -16,7 +18,7 @@ export default function AboutPage() {
             My Story
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
-            How I became passionate about creating meaningful digital experiences
+            Artist, Designer, Developer, Dog Dad.
           </p>
         </div>
       </section>
@@ -25,153 +27,170 @@ export default function AboutPage() {
       <section className="max-w-4xl mx-auto px-6 py-12">
         <div className="space-y-12">
           {/* Profile Image */}
-          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100">
-            <Image
-              src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=1200&h=800&fit=crop"
-              alt="Charlie Donnelly"
-              fill
-              className="object-cover"
+          <div>
+            <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100">
+              <Image
+                src="/images/charlie_main.png"
+                alt="Charlie Donnelly"
+                fill
+                className="object-cover"
+              />
+            </div>
+            {/* Optional caption - comment out or remove if not needed */}
+            <p className="text-center text-gray-600 mt-4 text-sm md:text-base">
+              Hoth, Ireland
+            </p>
+          </div>
+
+          {/* Story Content - Timeline */}
+          <div className="max-w-none mb-16">
+            <h2 className="font-heading text-3xl font-bold text-gray-200 mb-12">
+              The Story So Far
+            </h2>
+
+            {/* Timeline */}
+            <div className="relative">
+              {/* Timeline Line */}
+              <div className="absolute left-[31px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-gray-600 via-gray-700 to-gray-800"></div>
+
+              {/* Timeline Items */}
+              <div className="space-y-12">
+                {/* 2020 */}
+                <div className="relative flex gap-8">
+                  <div className="flex-shrink-0 w-16 pt-1">
+                    <div className="relative">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 border-4 border-gray-800 flex items-center justify-center shadow-lg">
+                        <span className="text-sm font-bold text-gray-100">2020</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-1 pt-2 pb-8">
+                    <p className="text-gray-300 leading-relaxed">
+                      Started a company senior year connecting designers and CS students with gig work, and chased fundraising through Notre Dame&apos;s IDEA Center.
+                      It didn&apos;t take off, but it lit the fuse: I learned I love building products from zero.
+                    </p>
+                  </div>
+                </div>
+
+                {/* 2022 */}
+                <div className="relative flex gap-8">
+                  <div className="flex-shrink-0 w-16 pt-1">
+                    <div className="relative">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 border-4 border-gray-800 flex items-center justify-center shadow-lg">
+                        <span className="text-sm font-bold text-gray-100">2022</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-1 pt-2 pb-8">
+                    <p className="text-gray-300 leading-relaxed">
+                      Joined Platform Venture Studio as a Product Development Lead. For 2.5 years I worked as a hands-on 0-1 developer, designing and shipping MVPs
+                      and wiring up the integrations and development pipelines behind a portfolio of founder startups. This is where my technical foundation was built.
+                    </p>
+                  </div>
+                </div>
+
+                {/* 2024 */}
+                <div className="relative flex gap-8">
+                  <div className="flex-shrink-0 w-16 pt-1">
+                    <div className="relative">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 border-4 border-gray-800 flex items-center justify-center shadow-lg">
+                        <span className="text-sm font-bold text-gray-100">2024</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-1 pt-2 pb-8">
+                    <p className="text-gray-300 leading-relaxed">
+                      Went independent and founded Donnelly Design. I found the most rewarding part was the client side: technical project and relationship
+                      management, understanding what each client actually needed and delivering it hands-on.
+                    </p>
+                  </div>
+                </div>
+
+                {/* 2025 */}
+                <div className="relative flex gap-8">
+                  <div className="flex-shrink-0 w-16 pt-1">
+                    <div className="relative">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 border-4 border-gray-800 flex items-center justify-center shadow-lg">
+                        <span className="text-sm font-bold text-gray-100">2025</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-1 pt-2 pb-8">
+                    <p className="text-gray-300 leading-relaxed">
+                      Focused the consultancy on a few core clients across design, development, and strategy. One of them, Runwayz, a career-development platform for the
+                      skilled trades, became a full-time role. I&apos;m now their Head of Product, working with their customers and partners to implement, customize, and build
+                      the platform around their needs. It&apos;s the combination of the two sides of my career: deep technical work and customer-facing partnership.
+                    </p>
+                  </div>
+                </div>
+
+                {/* 2026 */}
+                <div className="relative flex gap-8">
+                  <div className="flex-shrink-0 w-16 pt-1">
+                    <div className="relative">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-4 border-gray-700 flex items-center justify-center shadow-lg ring-4 ring-gray-700/50">
+                        <span className="text-sm font-bold text-white">2026</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-1 pt-2">
+                    <p className="text-gray-300 leading-relaxed">
+                      Now, I&apos;m sharpening the business and strategy side of my work, pursuing an MBA at Johns Hopkins and a Master of Design Leadership at MICA
+                      (both wrapping in 2027), while continuing to lead product at Runwayz.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* How did we get here section */}
+          <div className="prose prose-lg max-w-none">
+            <h2 className="font-heading text-3xl font-bold text-gray-200 mb-4 mt-12">
+              Have a Personal Life? Who, Me?
+            </h2>
+            <p className="text-gray-300 leading-relaxed mb-6">
+            While I am deeply committed to my work, I prioritize my interests, hobbies, and relationships outside of the office as well.
+            As a social butterfly who struggles to sit still, I will often act quickly to satisfy an interest or new hobby.
+            These interests often include traveling, learning a new skill, or spontaneously hopping on a plane to visit a friend, family member, or point of interest.
+            You know what they say - work hard, play hard.
+            </p>
+          </div>
+
+          {/* Image Carousel - Add/remove images in the array below */}
+          <div className="mt-16">
+            <ImageCarousel
+              images={[
+                { src: '/images/61331138_966475_351d82ffcc0bd56fbea178ebe82c47f5_full.JPG', caption: 'Ski Bum' },
+                { src: '/images/IMG_3507 1.png', caption: 'Iceland!' },
+                { src: '/images/IMG_9151 1.png', caption: 'This was a long day...' },
+                { src: '/images/IMG_2773 2 1 (1).png', caption: 'My pride and joy - Ms Lulu' },
+              ]}
+              autoScrollDelay={2500}
             />
           </div>
 
-          {/* Story Content */}
-          <div className="prose prose-lg max-w-none">
-            <h2 className="font-heading text-3xl font-bold text-gray-900 mb-4">
-              The Beginning
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              My journey into design and development began unexpectedly during my college years.
-              I was studying business when I took an elective course in graphic design—and everything
-              changed. I discovered that I could combine creativity with problem-solving to create
-              experiences that genuinely helped people.
-            </p>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              What started as a curiosity quickly became a passion. I spent countless nights learning
-              design principles, experimenting with code, and understanding how technology could serve
-              human needs. I realized that the most impactful work happens at the intersection of
-              beautiful design and thoughtful engineering.
-            </p>
-
-            <h2 className="font-heading text-3xl font-bold text-gray-900 mb-4 mt-12">
-              My Approach
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              I believe that great design isn't about following trends—it's about understanding people.
-              Every project I undertake starts with deep research into user needs, behaviors, and pain
-              points. I'm not satisfied with surface-level solutions; I want to understand the "why"
-              behind every decision.
-            </p>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Over the past 4+ years, I've had the privilege of working on projects ranging from
-              mobile banking apps serving hundreds of thousands of users to intimate mental health
-              platforms that provide support during people's most vulnerable moments. Each project
-              has taught me something invaluable about empathy, technical excellence, and the
-              responsibility we carry as designers and developers.
-            </p>
-
-            <h2 className="font-heading text-3xl font-bold text-gray-900 mb-4 mt-12">
-              What Drives Me
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              I'm motivated by the idea that good design can make someone's day a little bit easier,
-              a little bit brighter. Whether it's reducing friction in a banking transaction or creating
-              a calming space for someone struggling with anxiety, I'm driven by impact.
-            </p>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Beyond pixels and code, I'm passionate about mentorship and knowledge sharing. I believe
-              our industry grows stronger when we lift each other up. I regularly speak at design
-              meetups, contribute to open-source projects, and mentor aspiring designers and developers.
-            </p>
-
-            <h2 className="font-heading text-3xl font-bold text-gray-900 mb-4 mt-12">
-              Beyond Work
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              When I'm not designing or coding, you'll find me exploring new hiking trails,
-              experimenting with film photography, or diving deep into the latest design and
-              technology trends. I'm an avid reader, particularly interested in psychology,
-              behavioral economics, and human-computer interaction.
-            </p>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              I also believe in giving back to the community. I volunteer with local nonprofits
-              helping them improve their digital presence and make their services more accessible
-              to the people they serve.
-            </p>
-
-            <h2 className="font-heading text-3xl font-bold text-gray-900 mb-4 mt-12">
-              Let's Connect
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              I'm always excited to connect with fellow designers, developers, and anyone passionate
-              about creating meaningful digital experiences. Whether you want to collaborate on a
-              project, discuss design philosophy, or just say hello, I'd love to hear from you.
-            </p>
-          </div>
-
-          {/* Skills & Values */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
-            <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-              <h3 className="font-heading text-2xl font-bold text-gray-900 mb-4">
-                Core Values
-              </h3>
-              <ul className="space-y-3">
-                {[
-                  'User-centered thinking',
-                  'Continuous learning',
-                  'Attention to detail',
-                  'Collaborative spirit',
-                  'Accessibility & inclusion',
-                  'Ethical technology',
-                ].map((value) => (
-                  <li key={value} className="flex items-start">
-                    <svg
-                      className="w-5 h-5 text-gray-900 mr-3 mt-0.5 flex-shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span className="text-gray-700">{value}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-              <h3 className="font-heading text-2xl font-bold text-gray-900 mb-4">
-                Expertise
-              </h3>
-              <ul className="space-y-3">
-                {[
-                  'UI/UX Design',
-                  'Product Strategy',
-                  'Design Systems',
-                  'Frontend Development',
-                  'User Research',
-                  'Prototyping & Testing',
-                ].map((skill) => (
-                  <li key={skill} className="flex items-start">
-                    <svg
-                      className="w-5 h-5 text-gray-900 mr-3 mt-0.5 flex-shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span className="text-gray-700">{skill}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          {/* 3D Books Reading List */}
+          <BooksGrid
+            books={[
+              {
+                title: "Theo of Golden",
+                cover: "/images/theogolden.png"
+              },
+              {
+                title: "Oathbringer",
+                cover: "/images/oathbringer.png"
+              },
+              {
+                title: "Crossroads",
+                cover: "/images/crossroads.png"
+              },
+              {
+                title: "The Challenger Sale",
+                cover: "/images/challengersale.png"
+              }
+            ]}
+          />
         </div>
       </section>
     </div>

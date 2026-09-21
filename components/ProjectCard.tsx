@@ -13,9 +13,9 @@ const ProjectCard = ({ project, number }: ProjectCardProps) => {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="group block"
+      className="group block h-full"
     >
-      <article className="bg-white rounded-lg overflow-hidden border border-gray-200 hover:border-gray-900 transition-all duration-300 hover:shadow-lg">
+      <article className="h-full flex flex-col bg-white rounded-lg overflow-hidden border border-gray-200 hover:border-gray-900 transition-all duration-300 hover:shadow-lg">
         <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
           <Image
             src={project.heroImage}
@@ -25,7 +25,7 @@ const ProjectCard = ({ project, number }: ProjectCardProps) => {
           />
         </div>
 
-        <div className="p-6">
+        <div className="p-6 flex flex-col flex-1">
           <div className="flex items-start justify-between mb-3">
             <span className="font-heading text-4xl font-bold text-gray-300 group-hover:text-gray-900 transition-colors">
               {formattedNumber}
@@ -54,7 +54,7 @@ const ProjectCard = ({ project, number }: ProjectCardProps) => {
             ))}
           </div>
 
-          <div className="flex items-center text-sm font-medium text-gray-900 group-hover:text-gray-700">
+          <div className="flex items-center text-sm font-medium text-gray-900 group-hover:text-gray-700 mt-auto">
             <span>View Project</span>
             <svg
               className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"

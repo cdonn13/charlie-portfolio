@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# large unused case deck (kept locally, deployed via vercel CLI)
+/public/pdfs/Optimizing a Talent Funnel - Case Deck (1).pdf

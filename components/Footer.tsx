@@ -8,9 +8,9 @@ const Footer = () => {
   ]
 
   const socialLinks = [
-    { href: 'https://linkedin.com/in/charlesdonnelly', label: 'LinkedIn' },
-    { href: 'https://github.com/charlesdonnelly', label: 'GitHub' },
-    { href: 'mailto:hello@charliedonnelly.com', label: 'Email' },
+    { href: 'https://www.linkedin.com/in/charles-donnelly-7448a2173/', label: 'LinkedIn' },
+    { href: 'https://github.com/cdonn13', label: 'GitHub' },
+    { href: 'mailto:cedonnelly13@gmail.com', label: 'Email' },
   ]
 
   return (
@@ -22,7 +22,7 @@ const Footer = () => {
               Charlie Donnelly
             </h3>
             <p className="text-gray-600 mb-4">
-              A passionate designer and developer creating beautiful digital experiences.
+              A product leader and technical builder working at the intersection of design, development, and client relationships.
             </p>
           </div>
 

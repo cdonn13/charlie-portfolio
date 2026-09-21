@@ -6,11 +6,12 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
         sans: ['var(--font-roboto)', 'sans-serif'],
-        heading: ['var(--font-varela-round)', 'sans-serif'],
+        heading: ['var(--font-roboto)', 'sans-serif'],
       },
       colors: {
         background: 'var(--background)',

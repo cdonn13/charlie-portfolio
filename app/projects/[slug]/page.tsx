@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { projects } from '@/data/projects'
+import ImageGallery from '@/components/ImageGallery'
+import PdfModal from '@/components/PdfModal'
 import type { Metadata } from 'next'
 
 interface ProjectPageProps {
@@ -81,28 +83,28 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <aside className="md:col-span-1">
             <div className="sticky top-24 space-y-6">
               <div>
-                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
+                <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-2">
                   Year
                 </h3>
-                <p className="text-gray-900">{project.year}</p>
+                <p className="text-gray-100">{project.year}</p>
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
+                <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-2">
                   Role
                 </h3>
-                <p className="text-gray-900">{project.role}</p>
+                <p className="text-gray-100">{project.role}</p>
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
+                <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-2">
                   Tools
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {project.tools.map((tool) => (
                     <span
                       key={tool}
-                      className="text-sm text-gray-700 bg-gray-100 px-2 py-1 rounded"
+                      className="text-sm text-gray-900 bg-gray-100 px-2 py-1 rounded"
                     >
                       {tool}
                     </span>
@@ -111,20 +113,25 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
+                <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-2">
                   Tags
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-sm text-gray-700 bg-gray-100 px-2 py-1 rounded"
+                      className="text-sm text-gray-900 bg-gray-100 px-2 py-1 rounded"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
               </div>
+
+              {/* Case study PDF (only when the project has one) */}
+              {project.caseStudyPdf && (
+                <PdfModal src={project.caseStudyPdf} label={project.caseStudyLabel} />
+              )}
             </div>
           </aside>
 
@@ -132,32 +139,53 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <div className="md:col-span-3 space-y-12">
             {/* Overview */}
             <div>
-              <h2 className="font-heading text-3xl font-bold text-gray-900 mb-4">
-                Overview
+              <h2 className="font-heading text-3xl font-bold text-white mb-4">
+                {project.overviewTitle || 'Context'}
               </h2>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                {project.overview}
-              </p>
+              <div className="space-y-4 mb-6">
+                {project.overview.split('\n\n').map((paragraph, index) => (
+                  <p key={index} className="text-lg text-gray-300 leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+              {project.overviewImages && project.overviewImages.length > 0 && (
+                <ImageGallery images={project.overviewImages} />
+              )}
             </div>
 
             {/* Problem */}
             <div>
-              <h2 className="font-heading text-3xl font-bold text-gray-900 mb-4">
-                The Problem
+              <h2 className="font-heading text-3xl font-bold text-white mb-4">
+                {project.problemTitle || 'The Problem'}
               </h2>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                {project.problem}
-              </p>
+              <div className="space-y-4 mb-6">
+                {project.problem.split('\n\n').map((paragraph, index) => (
+                  <p key={index} className="text-lg text-gray-300 leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+              {project.problemImages && project.problemImages.length > 0 && (
+                <ImageGallery images={project.problemImages} />
+              )}
             </div>
 
             {/* Solution */}
             <div>
-              <h2 className="font-heading text-3xl font-bold text-gray-900 mb-4">
-                The Solution
+              <h2 className="font-heading text-3xl font-bold text-white mb-4">
+                {project.solutionTitle || 'The Solution'}
               </h2>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                {project.solution}
-              </p>
+              <div className="space-y-4 mb-6">
+                {project.solution.split('\n\n').map((paragraph, index) => (
+                  <p key={index} className="text-lg text-gray-300 leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+              {project.solutionImages && project.solutionImages.length > 0 && (
+                <ImageGallery images={project.solutionImages} />
+              )}
             </div>
 
             {/* Project Images */}
@@ -186,19 +214,31 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {/* Results */}
             {project.results && project.results.length > 0 && (
               <div>
-                <h2 className="font-heading text-3xl font-bold text-gray-900 mb-6">
-                  Results & Impact
+                <h2 className="font-heading text-3xl font-bold text-white mb-6">
+                  {project.resultsTitle || 'Results & Impact'}
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {project.resultsDescription && (
+                  <div className="space-y-4 mb-6">
+                    {project.resultsDescription.split('\n\n').map((paragraph, index) => (
+                      <p key={index} className="text-lg text-gray-300 leading-relaxed">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                )}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                   {project.results.map((result, index) => (
                     <div
                       key={index}
                       className="bg-gray-50 border border-gray-200 rounded-lg p-6"
                     >
-                      <p className="text-gray-900">{result}</p>
+                      <p className="text-gray-800">{result}</p>
                     </div>
                   ))}
                 </div>
+                {project.resultsImages && project.resultsImages.length > 0 && (
+                  <ImageGallery images={project.resultsImages} />
+                )}
               </div>
             )}
           </div>
@@ -214,8 +254,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 href={`/projects/${previousProject.slug}`}
                 className="group block p-6 bg-white rounded-lg border border-gray-200 hover:border-gray-900 transition-all"
               >
-                <span className="text-sm text-gray-500 mb-2 block">Previous Project</span>
-                <h3 className="font-heading text-xl font-bold text-gray-900 group-hover:text-gray-700">
+                <span className="text-sm text-gray-400 mb-2 block">Previous Project</span>
+                <h3 className="font-heading text-xl font-bold text-gray-900 group-hover:text-gray-300">
                   {previousProject.title}
                 </h3>
               </Link>
@@ -226,8 +266,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 href={`/projects/${nextProject.slug}`}
                 className="group block p-6 bg-white rounded-lg border border-gray-200 hover:border-gray-900 transition-all md:text-right"
               >
-                <span className="text-sm text-gray-500 mb-2 block">Next Project</span>
-                <h3 className="font-heading text-xl font-bold text-gray-900 group-hover:text-gray-700">
+                <span className="text-sm text-gray-400 mb-2 block">Next Project</span>
+                <h3 className="font-heading text-xl font-bold text-gray-900 group-hover:text-gray-300">
                   {nextProject.title}
                 </h3>
               </Link>
@@ -237,7 +277,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <div className="mt-8 text-center">
             <Link
               href="/"
-              className="inline-flex items-center text-gray-900 font-medium hover:text-gray-700"
+              className="inline-flex items-center text-gray-100 font-medium hover:text-gray-300"
             >
               <svg
                 className="w-4 h-4 mr-2"

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Roboto, Varela_Round } from 'next/font/google'
+import { Roboto, Manrope } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -10,10 +10,10 @@ const roboto = Roboto({
   variable: '--font-roboto',
 })
 
-const varelaRound = Varela_Round({
+const manrope = Manrope({
   weight: '400',
   subsets: ['latin'],
-  variable: '--font-varela-round',
+  variable: '--font-manrope',
 })
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${roboto.variable} ${varelaRound.variable}`}>
+    <html lang="en" className={`dark ${roboto.variable} ${manrope.variable}`}>
       <body className="antialiased">
         <Navbar />
         <main>{children}</main>

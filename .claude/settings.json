@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(vercel login *)",
+      "Bash(vercel whoami *)",
+      "Bash(vercel inspect *)",
+      "Bash(python3 -c \"import sys; n=sys.stdin.readline\\(\\).rstrip\\('\\\\n'\\); print\\(repr\\(n\\)\\); print\\('codepoints around PM:', [hex\\(ord\\(c\\)\\) for c in n if ord\\(c\\)>127]\\)\")",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 -c \"import urllib.parse;print\\(urllib.parse.quote\\('/images/Screenshot 2026-06-29 at 2.24.38 PM.png'\\)\\)\")",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' 'http://localhost:3001/_next/image?url=__TRACKED_VAR__&w=1080&q=75')",
+      "Bash(lsof -nP -iTCP -sTCP:LISTEN)",
+      "Bash(kill 50625)",
+      "Bash(pkill -f \"CursorPortfolio/node_modules/.bin/next dev\")",
+      "Bash(curl -s -o /dev/null -w \"page -> %{http_code}\\\\n\" \"http://localhost:3000/projects/pre-application-talent-pipeline\")"
+    ]
+  }
+}
