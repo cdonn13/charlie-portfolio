@@ -83,8 +83,8 @@ export default function AboutPage() {
                   </div>
                   <div className="flex-1 pt-2 pb-8">
                     <p className="text-gray-300 leading-relaxed">
-                      Joined Platform Venture Studio as a Product Development Lead. For 2.5 years I worked as a hands-on 0-1 developer, designing and shipping MVPs
-                      and wiring up the integrations and development pipelines behind a portfolio of founder startups. This is where my technical foundation was built.
+                      Joined Platform Venture Studio as a Product Developer, and was promoted to Product Development Lead. For two years I worked as a hands-on 0-1 developer,
+                      designing and shipping MVPs and wiring up the integrations and development pipelines behind a portfolio of founder startups. This is where my technical foundation was built.
                     </p>
                   </div>
                 </div>

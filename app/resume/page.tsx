@@ -8,7 +8,21 @@ export const metadata: Metadata = {
 const summary =
   'Product Lead and Client Manager with a technical background, spanning software development, design, and product management. Experienced across startups and venture capital, building products end-to-end while managing the stakeholder and partner relationships. A multidimensional product leader equally comfortable in the code, in the design, and in front of the customer.'
 
-const experiences = [
+type Role = {
+  title: string
+  period: string
+}
+
+type Experience = {
+  title: string
+  company: string
+  location: string
+  period: string
+  description: string[]
+  roles?: Role[]
+}
+
+const experiences: Experience[] = [
   {
     title: 'Head of Product',
     company: 'Runwayz',
@@ -36,7 +50,11 @@ const experiences = [
     title: 'Product Development Lead',
     company: 'Platform Venture Studio',
     location: 'Chicago, IL',
-    period: 'Jan 2022 - Mar 2024',
+    period: 'Jan 2022 - Feb 2024',
+    roles: [
+      { title: 'Product Development Lead', period: 'Mar 2023 - Feb 2024' },
+      { title: 'Product Developer', period: 'Jan 2022 - Mar 2023' },
+    ],
     description: [
       'Worked directly with founders to cultivate the right product roadmap and execute on their product vision, prioritizing ruthlessly under tight constraints and simultaneous product launches.',
       'Built and designed MVPs as a hands-on developer for a diverse portfolio of high-growth startups, shipping scalable products under tight 8-week timelines that contributed to a collective $5 million in annual recurring revenue.',
@@ -147,15 +165,29 @@ export default function ResumePage() {
                 <div className="absolute w-4 h-4 bg-gray-900 rounded-full -left-[9px] top-0"></div>
                 <div>
                   <h3 className="font-heading text-2xl font-bold text-gray-900 mb-1">
-                    {exp.title}
+                    {exp.roles ? exp.company : exp.title}
                   </h3>
                   <div className="flex flex-wrap gap-2 text-gray-600 mb-3">
-                    <span className="font-medium">{exp.company}</span>
-                    <span>•</span>
+                    {!exp.roles && (
+                      <>
+                        <span className="font-medium">{exp.company}</span>
+                        <span>•</span>
+                      </>
+                    )}
                     <span>{exp.location}</span>
                     <span>•</span>
                     <span>{exp.period}</span>
                   </div>
+                  {exp.roles && (
+                    <ul className="mb-4 space-y-1">
+                      {exp.roles.map((role) => (
+                        <li key={role.title} className="flex flex-wrap gap-2 text-gray-700">
+                          <span className="font-medium text-gray-900">{role.title}</span>
+                          <span className="text-gray-600">{role.period}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                   <ul className="space-y-2">
                     {exp.description.map((item, idx) => (
                       <li key={idx} className="flex items-start text-gray-700">

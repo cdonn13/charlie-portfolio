@@ -277,3 +277,17 @@ Copy-only changes; no layout or styling changes beyond one moved highlight.
 - Apostrophes written as `&apos;` to satisfy `react/no-unescaped-entities`.
 
 Verified: `npx tsc --noEmit` clean, `next lint` clean, /about returns 200.
+
+## Platform Venture Studio promotion (resume page)
+- [x] Add optional `roles` to experience data + `Experience` type
+- [x] Platform entry: period Jan 2022 - Feb 2024, roles = Product Developer (Jan 2022 - Mar 2023) -> Product Development Lead (Mar 2023 - Feb 2024)
+- [x] Render nested role lines under company when `roles` present
+- [x] Typecheck
+
+### Review
+Resume page only. Added `Experience`/`Role` types so one entry can carry a promotion history.
+Platform Venture Studio now shows company as the heading with a Jan 2022 - Feb 2024 span, and two
+dated role lines beneath (Lead Mar 2023 - Feb 2024, Product Developer Jan 2022 - Mar 2023). Entries
+without `roles` render exactly as before. Location left as Chicago, IL per Charlie.
+Also fixed app/about/page.tsx 2022 timeline entry: joined as Product Developer, promoted to Product
+Development Lead; tenure corrected from "2.5 years" to "two years" (Jan 2022 - Feb 2024).
